@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { destinations } from "@/data";
 import { BsArrowRight } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";

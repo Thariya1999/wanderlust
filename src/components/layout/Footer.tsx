@@ -27,7 +27,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-sm text-white/35 leading-relaxed mb-6">
-            We craft transformative journeys to the world's most extraordinary places. Every adventure is thoughtfully curated with passion and local expertise.
+            We craft transformative journeys to the world&apos;s most extraordinary places. Every adventure is thoughtfully curated with passion and local expertise.
           </p>
           <div className="flex gap-3">
             {socials.map((s) => (

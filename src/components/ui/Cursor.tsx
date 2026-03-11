@@ -4,7 +4,8 @@ import { useEffect, useRef } from "react";
 export default function Cursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  let ringX = 0, ringY = 0;
+  const ringXRef = useRef(0);
+  const ringYRef = useRef(0);
 
   useEffect(() => {
     const cursor = cursorRef.current;
