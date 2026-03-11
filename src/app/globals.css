@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fonts are loaded via next/font/google in layout.tsx — no @import needed here */
+
+/* ─── Custom Cursor ─── */
+.cursor {
+  width: 10px; height: 10px;
+  background: #C4793A;
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, background 0.3s;
+}
+.cursor.hovering { width: 18px; height: 18px; background: #D4A853; }
+
+.cursor-ring {
+  width: 34px; height: 34px;
+  border: 1px solid #C4793A;
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, opacity 0.3s;
+  opacity: 0.55;
+}
+.cursor-ring.hovering { width: 54px; height: 54px; opacity: 0.25; }
+
+/* ─── Scroll Reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.85s cubic-bezier(0.25,0.46,0.45,0.94),
+              transform 0.85s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.85s cubic-bezier(0.25,0.46,0.45,0.94),
+              transform 0.85s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.85s cubic-bezier(0.25,0.46,0.45,0.94),
+              transform 0.85s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
+/* ─── Hero Animations ─── */
+@keyframes heroZoom {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+.animate-hero-zoom { animation: heroZoom 14s cubic-bezier(0.25,0.46,0.45,0.94) forwards; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fadeUp 0.9s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+.animate-fade-up-d1 { animation: fadeUp 0.9s 0.2s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+.animate-fade-up-d2 { animation: fadeUp 0.9s 0.4s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+.animate-fade-up-d3 { animation: fadeUp 0.9s 0.6s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+.animate-fade-up-d4 { animation: fadeUp 0.9s 0.8s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+
+@keyframes scrollLine {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+.animate-scroll-line { animation: scrollLine 1.8s ease-in-out infinite; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+.animate-float { animation: float 5s ease-in-out infinite; }
+
+/* ─── Destination Card Hover ─── */
+.dest-card-desc {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s ease, opacity 0.4s ease;
+}
+.group:hover .dest-card-desc { max-height: 100px; opacity: 1; }
+
+.dest-card-btn {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.group:hover .dest-card-btn { opacity: 1; transform: translateY(0); }
+
+/* ─── Page Transition ─── */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter { animation: pageIn 0.6s ease both; }
+
+/* ─── Gallery transition ─── */
+.gallery-main-img {
+  transition: opacity 0.4s ease;
+}
+.gallery-main-img.fading { opacity: 0; }
+
+/* ─── Stat counter ─── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.stat-appear { animation: countUp 0.6s ease both; }
+
+/* ─── Underline hover ─── */
+.hover-underline {
+  position: relative;
+}
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+.hover-underline:hover::after { width: 100%; }
+
+/* ─── Inputs & buttons use custom cursor ─── */
+input, select, textarea, button, a { cursor: none; }
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #FAF7F2; }
+::-webkit-scrollbar-thumb { background: #C4793A; border-radius: 3px; }
